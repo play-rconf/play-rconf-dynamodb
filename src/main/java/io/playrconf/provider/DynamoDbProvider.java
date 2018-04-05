@@ -93,6 +93,8 @@ public class DynamoDbProvider extends AbstractProvider {
         final String accessSecret = config.getString("access-secret");
         final String region = config.getString("region");
         final String tableName = config.getString("table");
+        final String fieldKey = config.getString("field-key");
+        final String fieldValue = config.getString("field-value");
         final String prefix = config.hasPath("prefix") ? config.getString("prefix") : "";
         final String separator = config.hasPath("separator") ? config.getString("separator") : ".";
 
@@ -103,6 +105,10 @@ public class DynamoDbProvider extends AbstractProvider {
             throw new ConfigException.BadValue(config.origin(), "access-secret", "Required");
         } else if (region == null || region.isEmpty()) {
             throw new ConfigException.BadValue(config.origin(), "region", "Required");
+        } else if (fieldKey == null || fieldKey.isEmpty()) {
+            throw new ConfigException.BadValue(config.origin(), "field-key", "Required");
+        } else if (fieldValue == null || fieldValue.isEmpty()) {
+            throw new ConfigException.BadValue(config.origin(), "field-value", "Required");
         } else if (separator == null || separator.isEmpty()) {
             throw new ConfigException.BadValue(config.origin(), "separator", "Required");
         }
@@ -120,14 +126,14 @@ public class DynamoDbProvider extends AbstractProvider {
         try {
             // Retrieve items from DynamoDB
             final List<Map<String, AttributeValue>> items = amazonDynamoDBClient
-                .scan(tableName, Arrays.asList("key", "value"))
+                .scan(tableName, Arrays.asList(fieldKey, fieldValue))
                 .getItems();
 
             // Retrieve all available objects as "Key -> Value"
             Tuple2<String, Object> currentTuple = new Tuple2<>();
             for (final Map<String, AttributeValue> item : items) {
                 for (final Map.Entry<String, AttributeValue> data : item.entrySet()) {
-                    if (data.getKey().compareTo("key") == 0) {
+                    if (data.getKey().compareTo(fieldKey) == 0) {
                         String cfgKey = data
                             .getValue()
                             .getS()
@@ -137,7 +143,7 @@ public class DynamoDbProvider extends AbstractProvider {
                             cfgKey = cfgKey.substring(1);
                         }
                         currentTuple.setLeft(cfgKey);
-                    } else if (data.getKey().compareTo("value") == 0) {
+                    } else if (data.getKey().compareTo(fieldValue) == 0) {
                         switch (data.getValue().toString().substring(1, 2)) {
                             case "B": {
                                 currentTuple.setRight(data.getValue().getBOOL());

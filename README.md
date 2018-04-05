@@ -42,6 +42,14 @@ remote-configuration {
     table = ""
     table = ${?REMOTECONF_DYNAMODB_TABLE}
 
+    # Name of the field containing the key
+    field-key = "key"
+    field-key = ${?REMOTECONF_DYNAMODB_FIELDKEY}
+
+    # Name of the field containing the value
+    field-value = "value"
+    field-value = ${?REMOTECONF_DYNAMODB_FIELDVALUE}
+
     # Prefix. Get only values with key beginning
     # with the configured prefix
     prefix = ""

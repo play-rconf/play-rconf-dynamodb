@@ -60,6 +60,8 @@ public class DynamoDbProviderTest {
                 + "dynamodb.access-secret = \"" + System.getenv("REMOTECONF_DYNAMODB_SECRET") + "\"\n"
                 + "dynamodb.region = \"" + System.getenv("REMOTECONF_DYNAMODB_REGION") + "\"\n"
                 + "dynamodb.table = \"play-rconf-continuous-integration\"\n"
+                + "dynamodb.field-key = \"key\"\n"
+                + "dynamodb.field-value = \"value\"\n"
                 + "dynamodb.prefix = \"" + prefix + "\"\n"
                 + "dynamodb.separator = \".\"\n"
         );
