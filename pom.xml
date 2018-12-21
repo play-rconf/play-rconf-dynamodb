@@ -6,7 +6,7 @@
 
     <groupId>io.play-rconf</groupId>
     <artifactId>play-rconf-dynamodb</artifactId>
-    <version>18.10</version>
+    <version>18.12</version>
     <name>Play Remote Configuration - DynamoDB</name>
     <description>Retrieves configuration from DynamoDB</description>
     <url>https://github.com/play-rconf/play-rconf-dynamodb</url>
@@ -132,7 +132,7 @@
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.11.420</version>
+            <version>1.11.473</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

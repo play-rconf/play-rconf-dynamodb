@@ -1,7 +1,7 @@
 # Play Remote Configuration - DynamoDB
 
 
-[![Latest release](https://img.shields.io/badge/latest_release-18.04-orange.svg)](https://github.com/play-rconf/play-rconf-dynamodb/releases)
+[![Latest release](https://img.shields.io/badge/latest_release-18.12-orange.svg)](https://github.com/play-rconf/play-rconf-dynamodb/releases)
 [![JitPack](https://jitpack.io/v/play-rconf/play-rconf-dynamodb.svg)](https://jitpack.io/#play-rconf/play-rconf-dynamodb)
 [![Build](https://img.shields.io/travis-ci/play-rconf/play-rconf-dynamodb.svg?branch=master&style=flat)](https://travis-ci.org/play-rconf/play-rconf-dynamodb)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/play-rconf/play-rconf-dynamodb/master/LICENSE)
